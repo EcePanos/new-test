@@ -1,0 +1,7 @@
+FROM simple:latest
+
+# install pytest
+RUN pip install pytest
+
+# run the tests
+CMD ["pytest", "test_main.py"]

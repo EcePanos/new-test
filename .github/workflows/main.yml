@@ -57,7 +57,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ../../Dockerfile.test
+          file: ./Dockerfile.test
           push: false
           tags: tester:latest
           outputs: type=docker, dest=/tmp/tester.tar

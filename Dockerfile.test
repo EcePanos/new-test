@@ -1,8 +1,6 @@
 ARG BASE_IMAGE=python:3.8-slim
 FROM ${BASE_IMAGE} as base
 
-WORKDIR /app
-
 # install pytest
 RUN pip install pytest
 

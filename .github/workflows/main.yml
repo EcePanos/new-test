@@ -59,7 +59,7 @@ jobs:
           tags: tester:latest
           outputs: type=docker, dest=/tmp/tester.tar
           build-args: |
-            --build-arg BASE_IMAGE=image:latest
+            BASE_IMAGE=image:latest
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

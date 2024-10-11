@@ -21,6 +21,9 @@ jobs:
           tags: image:latest
           outputs: type=local, dest=/tmp/image.tar
 
+      - name: Change permissions
+        run: sudo chmod -R 755 /tmp/image.tar
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -54,6 +57,9 @@ jobs:
           outputs: type=local, dest=/tmp/tester.tar
           build-args: |
             --build-arg BASE_IMAGE=image:latest
+
+      - name: Change permissions
+        run: sudo chmod -R 755 /tmp/image.tar
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

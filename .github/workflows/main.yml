@@ -43,6 +43,10 @@ jobs:
       - name: Load image
         run: docker load -i /tmp/image.tar
 
+      - name: Tag image
+        run: docker tag $(docker images -q | head -n 1) image:latest
+
+
       - name: Checkout
         uses: actions/checkout@v2
 

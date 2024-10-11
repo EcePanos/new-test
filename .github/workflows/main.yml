@@ -12,6 +12,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Build
         id: build
         uses: docker/build-push-action@v6
@@ -19,7 +22,7 @@ jobs:
           context: .
           push: false
           tags: image:latest
-          outputs: type=local, dest=/tmp/image.tar
+          outputs: type=docker, dest=/tmp/image.tar
 
       - name: Change permissions
         run: sudo chmod -R 755 /tmp/image.tar
@@ -46,6 +49,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Build
         id: build
         uses: docker/build-push-action@v5
@@ -54,7 +60,7 @@ jobs:
           file: ../../Dockerfile.test
           push: false
           tags: tester:latest
-          outputs: type=local, dest=/tmp/tester.tar
+          outputs: type=docker, dest=/tmp/tester.tar
           build-args: |
             --build-arg BASE_IMAGE=image:latest
 

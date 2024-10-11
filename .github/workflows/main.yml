@@ -19,7 +19,7 @@ jobs:
           context: .
           push: false
           tags: image:latest
-          outputs: type=docker, dest=/tmp/image.tar
+          outputs: type=local, dest=/tmp/image.tar
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -51,7 +51,7 @@ jobs:
           file: ../../Dockerfile.test
           push: false
           tags: tester:latest
-          outputs: type=docker, dest=/tmp/tester.tar
+          outputs: type=local, dest=/tmp/tester.tar
           build-args: |
             --build-arg BASE_IMAGE=image:latest
 

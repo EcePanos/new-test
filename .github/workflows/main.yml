@@ -9,12 +9,12 @@ jobs:
     outputs:
       image: ${{ steps.build.outputs.imageid }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
       - name: Build
         id: build
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./Dockerfile
@@ -41,8 +41,8 @@ jobs:
       - name: Load image
         run: docker load -i /tmp/image.tar
 
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
       - name: Build
         id: build

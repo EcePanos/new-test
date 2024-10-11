@@ -17,7 +17,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./Dockerfile
+          file: ../../Dockerfile
           push: false
           tags: image:latest
           outputs: type=docker, dest=/tmp/image.tar
@@ -49,7 +49,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile
+          file: ../../Dockerfile.test
           push: false
           tags: tester:latest
           outputs: type=docker, dest=/tmp/tester.tar
